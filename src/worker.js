@@ -1,3 +1,4 @@
+import {handleExport, handleExportSub} from './mobile-export.js';
 // Cloudflare Worker: KV short link subscription + access token protection
 // Requires:
 // - KV namespace binding: SUB_STORE
@@ -567,6 +568,12 @@ export default {
       });
     }
 
+    if (request.method === 'POST' && url.pathname === '/api/export') {
+      return handleExport(request, env, url);
+    }
+    if (request.method === 'GET' && url.pathname.startsWith('/sub/export-')) {
+      return handleExportSub(url, env);
+    }
     if (request.method === 'POST' && url.pathname === '/api/generate') {
       return handleGenerate(request, env, url);
     }
