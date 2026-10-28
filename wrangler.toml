@@ -3,6 +3,10 @@ main = "src/worker.js"
 compatibility_date = "2026-03-06"
 workers_dev = true
 
+[[kv_namespaces]]
+binding = "SUB_STORE"
+id = "9a951ea3b2a94d468fac7e3275428a8f"
+
 [assets]
 directory = "./public"
 binding = "ASSETS"
