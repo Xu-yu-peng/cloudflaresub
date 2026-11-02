@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "check": "node tests/smoke.mjs && node tests/mobile-export.mjs"
+    "check": "node tests/smoke.mjs && node tests/mobile-export.mjs && node tests/desktop-sources.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"
