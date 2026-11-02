@@ -1,4 +1,5 @@
 import {handleExport, handleExportSub} from './mobile-export.js';
+import {handleDesktopSources, handleDesktopSub} from './desktop-sources.js';
 // Cloudflare Worker: KV short link subscription + access token protection
 // Requires:
 // - KV namespace binding: SUB_STORE
@@ -568,6 +569,12 @@ export default {
       });
     }
 
+    if (request.method === 'POST' && url.pathname === '/api/desktop-sources') {
+      return handleDesktopSources(request, env, url);
+    }
+    if (request.method === 'GET' && url.pathname.startsWith('/sub/desktop-')) {
+      return handleDesktopSub(url, env);
+    }
     if (request.method === 'POST' && url.pathname === '/api/export') {
       return handleExport(request, env, url);
     }
